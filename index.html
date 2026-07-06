@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitin Singh | Python Developer &amp; Data Analyst</title>
+<meta name="description" content="Portfolio of Nitin Singh, a Python Developer and Data Analyst specializing in AI-powered applications, LLM integration, and data-driven web development.">
+<meta name="keywords" content="Nitin Singh, Python Developer, Data Analyst, AI Developer, Portfolio, Streamlit, Ollama">
+<meta name="author" content="Nitin Singh">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Nitin Singh | Python Developer & Data Analyst">
+<meta property="og:description" content="AI-powered applications, REST API integrations, and data-driven web projects.">
+<meta property="og:type" content="website">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">
+      <span>&lt;</span><span class="loader-logo-name">NS</span><span>/&gt;</span>
+    </div>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill" id="loaderBarFill"></div>
+    </div>
+    <div class="loader-percent" id="loaderPercent">0%</div>
+  </div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ============ SCROLL PROGRESS BAR ============ -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============ PARTICLE / NETWORK BACKGROUND ============ -->
+<canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">NS<span class="dot">.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#certifications" class="nav-link">Certs</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></g></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO SECTION ============ -->
+<header class="hero" id="home">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="hero-container">
+    <div class="hero-text reveal">
+      <p class="hero-eyebrow">// Python Developer &amp; Data Analyst</p>
+      <h1 class="hero-name">Nitin <span class="grad-text">Singh</span></h1>
+      <div class="hero-terminal">
+        <div class="terminal-topbar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">nitin@portfolio: ~</span>
+        </div>
+        <div class="terminal-body" id="terminalBody"></div>
+      </div>
+      <p class="hero-desc">Building AI-powered applications, REST API integrations and data-driven web projects &mdash; from LLM-backed chatbots to full-stack interfaces. Currently pursuing MCA with a focus on AI and backend development.</p>
+      <div class="hero-btns">
+        <a href="assets/resume.pdf" download class="btn btn-primary ripple">
+          <span>Download Resume</span>
+        </a>
+        <a href="#contact" class="btn btn-outline ripple">
+          <span>Contact Me</span>
+        </a>
+        <a href="#services" class="btn btn-ghost ripple">
+          <span>Hire Me</span>
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/nitin-singh-57b95b306" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56z"/></svg>
+        </a>
+        <a href="https://github.com/nitin0882" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.82 2.8 1.3 3.49.99.1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5z"/></svg>
+        </a>
+        <a href="mailto:mr.nitinsingh0882@gmail.com" aria-label="Email" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M2 5.5C2 4.7 2.7 4 3.5 4h17c.8 0 1.5.7 1.5 1.5v13c0 .8-.7 1.5-1.5 1.5h-17c-.8 0-1.5-.7-1.5-1.5zM4 6.2v.4l8 5.4 8-5.4v-.4zm16 2.4-7.4 5c-.4.2-.8.2-1.2 0L4 8.6V18h16z"/></svg>
+        </a>
+        <a href="tel:+917217777055" aria-label="Phone" class="social-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <div class="photo-ring"></div>
+      <img src="assets/images/profile.png" alt="Nitin Singh - Python Developer and Data Analyst" loading="lazy">
+      <div class="floating-icon icon-py" style="--d:0s;">Py</div>
+      <div class="floating-icon icon-sql" style="--d:1.5s;">SQL</div>
+      <div class="floating-icon icon-js" style="--d:3s;">JS</div>
+      <div class="floating-icon icon-ai" style="--d:4.5s;">AI</div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-hint" aria-label="Scroll down">
+    <span></span>
+  </a>
+</header>
+
+<main>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 01 About</p>
+    <h2 class="section-title reveal">Know me <span class="grad-text">a little better</span></h2>
+
+    <div class="about-grid">
+      <div class="about-bio glass reveal">
+        <h3>Career Objective</h3>
+        <p>To grow as a Python developer and data analyst who builds intelligent, reliable software &mdash; combining backend logic, clean data pipelines, and practical AI integration to solve real problems.</p>
+        <h3>Bio</h3>
+        <p>I'm Nitin, an MCA student at IMS Noida (AKTU) with a Bachelor's in Computer Applications from GGSIPU. My work sits at the intersection of Python development and data analysis: I've built an AI chatbot powered by a local LLM, a movie recommendation app on a live REST API, and a fitness &amp; diet management platform &mdash; each one pairing a working data layer with a usable interface.</p>
+      </div>
+
+      <div class="about-side">
+        <div class="glass info-card reveal">
+          <h4>Education Summary</h4>
+          <ul>
+            <li>MCA &mdash; IMS Noida, AKTU <span>2024&ndash;2026</span></li>
+            <li>BCA &mdash; Delhi Technical Campus, GGSIPU <span>2021&ndash;2024</span></li>
+          </ul>
+        </div>
+        <div class="glass info-card reveal">
+          <h4>Languages</h4>
+          <ul class="lang-list">
+            <li>English</li>
+            <li>Hindi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="strengths-interests">
+      <div class="glass reveal">
+        <h4>Strengths</h4>
+        <div class="chip-row">
+          <span class="chip">Problem Solving</span>
+          <span class="chip">Decision Making</span>
+          <span class="chip">Analytical Thinking</span>
+          <span class="chip">Team Collaboration</span>
+          <span class="chip">Quick Learner</span>
+        </div>
+      </div>
+      <div class="glass reveal">
+        <h4>Interests</h4>
+        <div class="chip-row">
+          <span class="chip">AI &amp; LLMs</span>
+          <span class="chip">Data Storytelling</span>
+          <span class="chip">Backend Systems</span>
+          <span class="chip">API Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION TIMELINE ============ -->
+<section class="section section-alt" id="education">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 02 Journey</p>
+    <h2 class="section-title reveal">Education <span class="grad-text">Timeline</span></h2>
+
+    <div class="timeline">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass">
+          <span class="timeline-year">2024 &ndash; 2026</span>
+          <h3>Master of Computer Applications (MCA)</h3>
+          <p>IMS Noida, Dr. A.P.J. Abdul Kalam Technical University (AKTU)</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass">
+          <span class="timeline-year">2021 &ndash; 2024</span>
+          <h3>Bachelor of Computer Applications (BCA)</h3>
+          <p>Delhi Technical Campus, GGSIPU</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass">
+          <span class="timeline-year">2021</span>
+          <h3>Senior Secondary (XII)</h3>
+          <p>CBSE &mdash; Blue Diamond Public School</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass">
+          <span class="timeline-year">2019</span>
+          <h3>High School (X)</h3>
+          <p>CBSE &mdash; Blue Diamond Public School</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 03 Toolkit</p>
+    <h2 class="section-title reveal">Skills &amp; <span class="grad-text">Technologies</span></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-category glass reveal">
+        <h3>Programming Languages</h3>
+        <div class="skill-bar-item" data-percent="90">
+          <div class="skill-bar-head"><span>Python</span><span class="skill-percent">90%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="78">
+          <div class="skill-bar-head"><span>JavaScript</span><span class="skill-percent">78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="80">
+          <div class="skill-bar-head"><span>SQL</span><span class="skill-percent">80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="65">
+          <div class="skill-bar-head"><span>C++</span><span class="skill-percent">65%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal">
+        <h3>Frontend</h3>
+        <div class="skill-bar-item" data-percent="85">
+          <div class="skill-bar-head"><span>HTML5</span><span class="skill-percent">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="82">
+          <div class="skill-bar-head"><span>CSS3</span><span class="skill-percent">82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="75">
+          <div class="skill-bar-head"><span>Responsive UI Design</span><span class="skill-percent">75%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal">
+        <h3>Python Stack &amp; Libraries</h3>
+        <div class="skill-bar-item" data-percent="85">
+          <div class="skill-bar-head"><span>Pandas</span><span class="skill-percent">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="78">
+          <div class="skill-bar-head"><span>NumPy</span><span class="skill-percent">78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="80">
+          <div class="skill-bar-head"><span>Streamlit</span><span class="skill-percent">80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="70">
+          <div class="skill-bar-head"><span>Matplotlib / Seaborn</span><span class="skill-percent">70%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal">
+        <h3>AI &amp; LLM</h3>
+        <div class="skill-bar-item" data-percent="75">
+          <div class="skill-bar-head"><span>Ollama (Phi-3 Integration)</span><span class="skill-percent">75%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="72">
+          <div class="skill-bar-head"><span>Prompt Engineering</span><span class="skill-percent">72%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="70">
+          <div class="skill-bar-head"><span>AI Chatbot Development</span><span class="skill-percent">70%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal">
+        <h3>Database</h3>
+        <div class="skill-bar-item" data-percent="82">
+          <div class="skill-bar-head"><span>SQLite</span><span class="skill-percent">82%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="78">
+          <div class="skill-bar-head"><span>SQL Joins / Aggregations / CTEs</span><span class="skill-percent">78%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="70">
+          <div class="skill-bar-head"><span>Schema Design</span><span class="skill-percent">70%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal">
+        <h3>Web &amp; API</h3>
+        <div class="skill-bar-item" data-percent="80">
+          <div class="skill-bar-head"><span>REST API Integration</span><span class="skill-percent">80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="74">
+          <div class="skill-bar-head"><span>TMDB API</span><span class="skill-percent">74%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal">
+        <h3>Tools &amp; Version Control</h3>
+        <div class="skill-bar-item" data-percent="80">
+          <div class="skill-bar-head"><span>Git &amp; GitHub</span><span class="skill-percent">80%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="85">
+          <div class="skill-bar-head"><span>VS Code</span><span class="skill-percent">85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+        <div class="skill-bar-item" data-percent="88">
+          <div class="skill-bar-head"><span>MS Excel</span><span class="skill-percent">88%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category glass reveal circular-cat">
+        <h3>Core Focus Areas</h3>
+        <div class="circular-charts">
+          <div class="circle-chart" data-percent="82">
+            <svg viewBox="0 0 120 120">
+              <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+              <circle class="circle-fill" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <span class="circle-label">Python Dev<br><b>82%</b></span>
+          </div>
+          <div class="circle-chart" data-percent="76">
+            <svg viewBox="0 0 120 120">
+              <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+              <circle class="circle-fill" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <span class="circle-label">Data Analysis<br><b>76%</b></span>
+          </div>
+          <div class="circle-chart" data-percent="70">
+            <svg viewBox="0 0 120 120">
+              <circle class="circle-bg" cx="60" cy="60" r="52"></circle>
+              <circle class="circle-fill" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <span class="circle-label">AI Integration<br><b>70%</b></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section section-alt" id="projects">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 04 Work</p>
+    <h2 class="section-title reveal">Featured <span class="grad-text">Projects</span></h2>
+
+    <div class="projects-grid">
+
+      <article class="project-card glass reveal" data-project="bankbot">
+        <div class="project-media">
+          <div class="project-placeholder ph-bankbot">
+            <span>BankBot AI</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3>BankBot AI</h3>
+          <p class="project-tag">AI-Powered Banking Chatbot</p>
+          <p class="project-desc">An end-to-end chatbot that resolves banking &amp; finance queries using a locally-run LLM, with a Streamlit interface for real-time interaction.</p>
+          <div class="tech-row">
+            <span class="tech-pill">Python</span><span class="tech-pill">Streamlit</span><span class="tech-pill">Ollama</span><span class="tech-pill">Phi-3</span><span class="tech-pill">Pandas</span><span class="tech-pill">SQLite</span>
+          </div>
+          <div class="project-actions">
+            <button class="btn btn-sm btn-outline view-details" data-project="bankbot">View Details</button>
+            <a href="https://github.com/nitin0882" target="_blank" rel="noopener" class="btn btn-sm btn-primary">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card glass reveal" data-project="movix">
+        <div class="project-media">
+          <div class="project-placeholder ph-movix">
+            <span>Movix</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3>Movix</h3>
+          <p class="project-tag">Movie Recommendation Web App</p>
+          <p class="project-desc">A fully responsive movie discovery site pulling live data from the TMDB REST API, with dynamic search, trending sections, and rating displays.</p>
+          <div class="tech-row">
+            <span class="tech-pill">JavaScript</span><span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">TMDB API</span>
+          </div>
+          <div class="project-actions">
+            <button class="btn btn-sm btn-outline view-details" data-project="movix">View Details</button>
+            <a href="https://github.com/nitin0882" target="_blank" rel="noopener" class="btn btn-sm btn-primary">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card glass reveal" data-project="fitnfight">
+        <div class="project-media">
+          <div class="project-placeholder ph-fit">
+            <span>FIT-N-FIGHT</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3>FIT-N-FIGHT</h3>
+          <p class="project-tag">Fitness &amp; Diet Management Website</p>
+          <p class="project-desc">A fitness platform with subscription plans, workout tracking, and diet planning modules, built on a modular codebase for easy feature extension.</p>
+          <div class="tech-row">
+            <span class="tech-pill">HTML5</span><span class="tech-pill">CSS3</span><span class="tech-pill">JavaScript</span>
+          </div>
+          <div class="project-actions">
+            <button class="btn btn-sm btn-outline view-details" data-project="fitnfight">View Details</button>
+            <a href="https://github.com/nitin0882" target="_blank" rel="noopener" class="btn btn-sm btn-primary">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECT MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box glass">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <div class="modal-slider" id="modalSlider">
+      <div class="modal-slide active"></div>
+      <div class="modal-slide"></div>
+      <div class="modal-slide"></div>
+    </div>
+    <div class="modal-slider-dots" id="modalDots"></div>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section class="section" id="certifications">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 05 Credentials</p>
+    <h2 class="section-title reveal">Certifications</h2>
+
+    <div class="cert-grid">
+      <div class="cert-card glass reveal">
+        <div class="cert-icon">🐍</div>
+        <h3>Introduction to Python</h3>
+        <p>Infosys Springboard</p>
+      </div>
+      <div class="cert-card glass reveal">
+        <div class="cert-icon">🛡️</div>
+        <h3>Cyber Security Fundamentals</h3>
+        <p>Honeywell</p>
+      </div>
+      <div class="cert-card glass reveal">
+        <div class="cert-icon">💼</div>
+        <h3>Infosys Springboard Internship 6.0</h3>
+        <p>Infosys Springboard</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section class="section section-alt" id="achievements">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 06 Highlights</p>
+    <h2 class="section-title reveal">Achievements</h2>
+
+    <div class="achieve-grid">
+      <div class="achieve-card glass reveal">
+        <div class="achieve-icon">🚀</div>
+        <h3>3 Full-Stack Projects Shipped</h3>
+        <p>Designed and built three complete applications spanning AI, web, and data &mdash; from database schema to deployed UI.</p>
+      </div>
+      <div class="achieve-card glass reveal">
+        <div class="achieve-icon">🧠</div>
+        <h3>Local LLM Integration</h3>
+        <p>Successfully integrated a Phi-3 LLM via Ollama into a production-style chatbot with domain-restricted, accurate responses.</p>
+      </div>
+      <div class="achieve-card glass reveal">
+        <div class="achieve-icon">📊</div>
+        <h3>Dual Specialization</h3>
+        <p>Built a working skill set across both software development and data analysis &mdash; from REST APIs to SQL-driven insights.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 07 What I Do</p>
+    <h2 class="section-title reveal">Services</h2>
+
+    <div class="services-grid">
+      <div class="service-card glass reveal">
+        <div class="service-icon">🐍</div>
+        <h3>Python Development</h3>
+        <p>Clean, maintainable Python code for scripts, automation, and application logic.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon">🤖</div>
+        <h3>AI &amp; LLM Integration</h3>
+        <p>Connecting local or hosted LLMs (like Ollama's Phi-3) into practical, domain-restricted chatbots and tools.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon">📈</div>
+        <h3>Data Analysis &amp; Visualization</h3>
+        <p>Cleaning, transforming, and visualizing data with Pandas, NumPy, Matplotlib and Excel.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon">💻</div>
+        <h3>Frontend Web Development</h3>
+        <p>Responsive, accessible interfaces built with HTML5, CSS3, and vanilla JavaScript.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon">🔌</div>
+        <h3>REST API Integration</h3>
+        <p>Consuming and structuring third-party APIs (like TMDB) into dynamic, data-driven UIs.</p>
+      </div>
+      <div class="service-card glass reveal">
+        <div class="service-icon">🗄️</div>
+        <h3>Database Design</h3>
+        <p>Designing SQLite/SQL schemas with clean joins, aggregations, and query structures.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATISTICS ============ -->
+<section class="section stats-section section-alt">
+  <div class="section-container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="3">0</span>
+        <p>Projects Completed</p>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="3">0</span>
+        <p>Certifications</p>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="15">0</span>
+        <p>Technologies Used</p>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="2">0</span>
+        <p>Core Domains</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="testimonials">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 08 Feedback</p>
+    <h2 class="section-title reveal">Testimonials</h2>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card glass reveal">
+        <p class="quote-mark">&ldquo;</p>
+        <p class="testimonial-text">Nitin picked up our LLM integration requirements quickly and shipped a working chatbot prototype ahead of schedule. Solid grasp of the full data pipeline.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AV</div>
+          <div>
+            <h4>Amit Verma</h4>
+            <span>Project Mentor</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card glass reveal">
+        <p class="quote-mark">&ldquo;</p>
+        <p class="testimonial-text">Working alongside Nitin on a shared project, I noticed his attention to clean, structured SQL and his patience in debugging data issues.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PS</div>
+          <div>
+            <h4>Priya Sharma</h4>
+            <span>Peer Developer</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card glass reveal">
+        <p class="quote-mark">&ldquo;</p>
+        <p class="testimonial-text">A quick learner with genuine curiosity about how systems fit together &mdash; from frontend polish to backend data handling.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RG</div>
+          <div>
+            <h4>Rakesh Gupta</h4>
+            <span>Course Instructor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section-alt" id="contact">
+  <div class="section-container">
+    <p class="section-eyebrow reveal">// 09 Get in Touch</p>
+    <h2 class="section-title reveal">Let's <span class="grad-text">Connect</span></h2>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="glass contact-item">
+          <span class="contact-icon">📍</span>
+          <div><h4>Location</h4><p>Ghaziabad, India</p></div>
+        </div>
+        <div class="glass contact-item">
+          <span class="contact-icon">📧</span>
+          <div><h4>Email</h4><p><a href="mailto:mr.nitinsingh0882@gmail.com">mr.nitinsingh0882@gmail.com</a></p></div>
+        </div>
+        <div class="glass contact-item">
+          <span class="contact-icon">📱</span>
+          <div><h4>Phone</h4><p><a href="tel:+917217777055">+91 72177 77055</a></p></div>
+        </div>
+        <div class="glass contact-item">
+          <span class="contact-icon">🔗</span>
+          <div><h4>LinkedIn</h4><p><a href="https://www.linkedin.com/in/nitin-singh-57b95b306" target="_blank" rel="noopener">nitin-singh-57b95b306</a></p></div>
+        </div>
+        <div class="glass contact-item">
+          <span class="contact-icon">💻</span>
+          <div><h4>GitHub</h4><p><a href="https://github.com/nitin0882" target="_blank" rel="noopener">github.com/nitin0882</a></p></div>
+        </div>
+      </div>
+
+      <form class="contact-form glass reveal" id="contactForm" novalidate>
+        <div class="form-group">
+          <input type="text" id="formName" name="name" placeholder=" " required>
+          <label for="formName">Your Name</label>
+          <span class="form-error" id="errName"></span>
+        </div>
+        <div class="form-group">
+          <input type="email" id="formEmail" name="email" placeholder=" " required>
+          <label for="formEmail">Your Email</label>
+          <span class="form-error" id="errEmail"></span>
+        </div>
+        <div class="form-group">
+          <input type="text" id="formSubject" name="subject" placeholder=" " required>
+          <label for="formSubject">Subject</label>
+          <span class="form-error" id="errSubject"></span>
+        </div>
+        <div class="form-group">
+          <textarea id="formMessage" name="message" rows="5" placeholder=" " required></textarea>
+          <label for="formMessage">Your Message</label>
+          <span class="form-error" id="errMessage"></span>
+        </div>
+        <button type="submit" class="btn btn-primary ripple full-width">
+          <span>Send Message</span>
+        </button>
+        <p class="form-success" id="formSuccess">Message sent! Thanks for reaching out &mdash; I'll reply soon.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,50 C360,100 1080,0 1440,50 L1440,100 L0,100 Z"></path></svg>
+  </div>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">NS<span class="dot">.</span></a>
+      <p>Python Developer &amp; Data Analyst crafting AI-driven, data-backed software.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <h4>Connect</h4>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/nitin-singh-57b95b306" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56z"/></svg></a>
+        <a href="https://github.com/nitin0882" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.58v-2c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.82 2.8 1.3 3.49.99.1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5z"/></svg></a>
+        <a href="mailto:mr.nitinsingh0882@gmail.com" class="social-icon" aria-label="Email"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M2 5.5C2 4.7 2.7 4 3.5 4h17c.8 0 1.5.7 1.5 1.5v13c0 .8-.7 1.5-1.5 1.5h-17c-.8 0-1.5-.7-1.5-1.5zM4 6.2v.4l8 5.4 8-5.4v-.4zm16 2.4-7.4 5c-.4.2-.8.2-1.2 0L4 8.6V18h16z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Nitin Singh. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ============ BACK TO TOP ============ -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 5l-7 7h4v7h6v-7h4z"/></svg>
+</button>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast"></div>
+
+<script src="js/animation.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
