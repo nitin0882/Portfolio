@@ -22,7 +22,7 @@
 
   function getParticleColor() {
     const theme = document.documentElement.getAttribute('data-theme');
-    return theme === 'light' ? '99, 102, 241' : '99, 102, 241';
+    return theme === 'light' ? '90, 90, 84' : '224, 163, 57';
   }
 
   class Particle {
@@ -45,7 +45,7 @@
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${getParticleColor()}, 0.6)`;
+      ctx.fillStyle = `rgba(${getParticleColor()}, 0.4)`;
       ctx.fill();
     }
   }
@@ -64,7 +64,7 @@
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < maxDist) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(34, 211, 238, ${0.12 * (1 - dist / maxDist)})`;
+          ctx.strokeStyle = `rgba(154, 154, 150, ${0.1 * (1 - dist / maxDist)})`;
           ctx.lineWidth = 1;
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
