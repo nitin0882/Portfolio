@@ -292,6 +292,11 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'BankBot AI — AI-Powered Banking Chatbot',
       tech: 'Python, Streamlit, Ollama, Phi-3 LLM, Pandas, SQLite',
       desc: 'An end-to-end AI chatbot built to resolve banking and finance queries, combining a locally-run LLM with a structured data layer for accurate, domain-restricted responses.',
+      images: [
+        'assets/images/projects/bankbot-1.png',
+        'assets/images/projects/bankbot-2.png',
+        'assets/images/projects/bankbot-3.png'
+      ],
       features: [
         'Phi-3 LLM integration via Ollama for context-aware natural language responses',
         'Interactive Streamlit web interface for real-time user interaction',
@@ -305,6 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Movix — Movie Recommendation Web App',
       tech: 'JavaScript, HTML5, CSS3, TMDB REST API',
       desc: 'A fully responsive movie discovery application that fetches real-time data from the TMDB REST API to power search, trending sections, and ratings.',
+      images: [
+        'assets/images/projects/movix-1.png',
+        'assets/images/projects/movix-2.png',
+        'assets/images/projects/movix-3.png'
+      ],
       features: [
         'Dynamic search with live results',
         'Trending sections and poster/rating display via JavaScript',
@@ -317,6 +327,11 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'FIT-N-FIGHT — Fitness & Diet Management Website',
       tech: 'HTML5, CSS3, JavaScript',
       desc: 'A fitness platform offering subscription plans, workout tracking, and diet planning modules on a modular, extensible codebase.',
+      images: [
+        'assets/images/projects/fitnfight-1.png',
+        'assets/images/projects/fitnfight-2.png',
+        'assets/images/projects/fitnfight-3.png'
+      ],
       features: [
         'Subscription plans with tiered access',
         'Workout tracking and diet planning modules',
@@ -331,33 +346,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modalContent');
   const modalClose = document.getElementById('modalClose');
   const modalDots = document.getElementById('modalDots');
-  const modalSlides = document.querySelectorAll('.modal-slide');
+  const modalSliderEl = document.getElementById('modalSlider');
 
   let slideIndex = 0;
   let slideInterval;
+  let currentSlideCount = 0;
+
+  function buildSlides(data) {
+    modalSliderEl.innerHTML = '';
+    data.images.forEach((src, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'modal-slide' + (i === 0 ? ' active' : '');
+
+      const fallback = document.createElement('span');
+      fallback.className = 'slide-fallback';
+      fallback.textContent = data.title.split(' — ')[0];
+      slide.appendChild(fallback);
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = data.title + ' — screenshot ' + (i + 1);
+      img.loading = 'lazy';
+      img.onerror = function () { this.remove(); }; // falls back to text label behind it
+      slide.appendChild(img);
+
+      modalSliderEl.appendChild(slide);
+    });
+    currentSlideCount = data.images.length;
+  }
 
   function renderDots() {
     modalDots.innerHTML = '';
-    modalSlides.forEach((_, i) => {
+    for (let i = 0; i < currentSlideCount; i++) {
       const dot = document.createElement('span');
       if (i === slideIndex) dot.classList.add('active');
       dot.addEventListener('click', () => goToSlide(i));
       modalDots.appendChild(dot);
-    });
+    }
   }
 
   function goToSlide(i) {
-    modalSlides[slideIndex].classList.remove('active');
+    const slides = modalSliderEl.querySelectorAll('.modal-slide');
+    slides[slideIndex].classList.remove('active');
     slideIndex = i;
-    modalSlides[slideIndex].classList.add('active');
+    slides[slideIndex].classList.add('active');
     renderDots();
   }
 
   function startSlider() {
     clearInterval(slideInterval);
+    if (currentSlideCount <= 1) return;
     slideInterval = setInterval(() => {
-      goToSlide((slideIndex + 1) % modalSlides.length);
-    }, 2500);
+      goToSlide((slideIndex + 1) % currentSlideCount);
+    }, 2800);
   }
 
   document.querySelectorAll('.view-details').forEach((btn) => {
@@ -378,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${data.challenges}</p>
       `;
       slideIndex = 0;
-      modalSlides.forEach((s, i) => s.classList.toggle('active', i === 0));
+      buildSlides(data);
       renderDots();
       startSlider();
       modalOverlay.classList.add('open');
